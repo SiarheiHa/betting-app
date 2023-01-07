@@ -1,3 +1,6 @@
+import { oddsMOCK } from 'mocks/odds';
+import { ResponseObject, OddItem } from 'types';
+
 enum Endpoint {
   GAMES = '/games',
   ODDS = '/odds',
@@ -21,12 +24,15 @@ class Api {
   };
 
   getOdds = async () => {
+    return Promise.resolve(oddsMOCK);
     const response = await this.getResource(
       Endpoint.ODDS + '?league=12&season=2022-2023&bookmaker=3&bet=1',
     );
     const jsonString = await response.text();
-    return JSON.parse(jsonString);
+    return JSON.parse(jsonString) as ResponseObject<OddItem>;
   };
 }
 
-export default Api;
+const api = new Api();
+
+export default api;

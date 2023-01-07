@@ -1,0 +1,8 @@
+.event-list-item {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.event-list-item.head {
+  background-color: aquamarine;
+}

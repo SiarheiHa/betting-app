@@ -1,9 +1,11 @@
+import EventList from 'components/event-list';
 import React from 'react';
 
 const MainPage = () => {
   return (
     <>
-      <p>main page</p>
+      <p>Events</p>
+      <EventList />
     </>
   );
 };
