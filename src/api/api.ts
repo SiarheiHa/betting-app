@@ -1,11 +1,8 @@
-import { ResponseObject } from 'types';
-
 enum Endpoint {
   GAMES = '/games',
+  ODDS = '/odds',
 }
-
 const apiBase = 'https://v1.basketball.api-sports.io';
-
 const myHeaders = new Headers();
 myHeaders.append('x-apisports-key', '1e078e9186025ca0e10dddca29b521da');
 
@@ -23,10 +20,12 @@ class Api {
     return res;
   };
 
-  getGames = async () => {
-    const response = await this.getResource(Endpoint.GAMES + '?date=2023-01-07');
-    const result_1 = await response.text();
-    return JSON.parse(result_1) as ResponseObject;
+  getOdds = async () => {
+    const response = await this.getResource(
+      Endpoint.ODDS + '?league=12&season=2022-2023&bookmaker=3&bet=1',
+    );
+    const jsonString = await response.text();
+    return JSON.parse(jsonString);
   };
 }
 

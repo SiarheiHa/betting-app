@@ -1,23 +1,5 @@
 export interface Parameters {
-  league: string;
-  season: string;
-  bookmaker: string;
-  bet: string;
-}
-
-export interface League {
-  id: number;
-  name: string;
-  type: string;
-  season: string;
-  logo: string;
-}
-
-export interface Country {
-  id: number;
-  name: string;
-  code: string;
-  flag: string;
+  date: string;
 }
 
 export interface Status {
@@ -26,15 +8,15 @@ export interface Status {
   timer?: null | string;
 }
 
-export interface League2 {
+export interface League {
   id: number;
   name: string;
   type: string;
-  season: string;
+  season: string | number;
   logo: string;
 }
 
-export interface Country2 {
+export interface Country {
   id: number;
   name: string;
   code: string;
@@ -90,40 +72,16 @@ export interface Game {
   stage?: null | string;
   week?: null | string;
   status: Status;
-  league: League2;
-  country: Country2;
+  league: League;
+  country: Country;
   teams: Teams;
   scores: Scores;
 }
 
-export interface Value {
-  value: string;
-  odd: string;
-}
-
-export interface Bet {
-  id: number;
-  name: string;
-  values: Value[];
-}
-
-export interface Bookmaker {
-  id: number;
-  name: string;
-  bets: Bet[];
-}
-
-export interface OddItem {
-  league: League;
-  country: Country;
-  game: Game;
-  bookmakers: Bookmaker[];
-}
-
-export interface ResponseObject<T> {
+export interface ResponseObject {
   get: string;
   parameters: Parameters;
   errors: string[];
   results: number;
-  response: T[];
+  response: Game[];
 }

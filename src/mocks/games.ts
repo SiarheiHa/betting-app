@@ -1,6 +1,6 @@
-import { ResponseObject } from 'types';
+// import { ResponseObject } from 'types';
 
-export const gamesMOCK: ResponseObject = {
+export const gamesMOCK = {
   get: 'games',
   parameters: {
     date: '2023-01-07',
