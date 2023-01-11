@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface Parameters {
   league: string;
   season: string;
@@ -126,4 +128,35 @@ export interface ResponseObject<T> {
   errors: string[];
   results: number;
   response: T[];
+}
+
+export enum FetchStatus {
+  PENDING = 'pending',
+  REJECTED = 'rejected',
+  FULFILLED = 'fullfilled',
+}
+
+export interface State {
+  oddItems: OddItem[];
+  status: FetchStatus;
+}
+
+export enum ActionType {
+  SET_ODD_ITEMS = 'SET_ODD_ITEMS',
+}
+
+export interface ActionModel {
+  type: ActionType;
+}
+
+export interface SetOddItems extends ActionModel {
+  type: ActionType.SET_ODD_ITEMS;
+  payload: OddItem[];
+}
+
+export type Action = SetOddItems;
+
+export interface ContextType {
+  state: State;
+  dispatch: React.Dispatch<Action>;
 }
