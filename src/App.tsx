@@ -1,3 +1,4 @@
+import MessageBlock from 'components/message-block';
 import GamePage from 'components/pages/game';
 import MainPage from 'components/pages/main';
 import NotFoundPage from 'components/pages/notFound';
@@ -11,6 +12,7 @@ function App() {
       <header>header</header>
       <main>
         <AppState>
+          <MessageBlock />
           <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/game/:id' element={<GamePage />} />

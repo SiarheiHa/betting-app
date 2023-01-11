@@ -14,6 +14,10 @@ const GamePage = () => {
   const oddItem = oddItems.find(({ game }) => String(game.id) === id);
   const handleBet = () => {
     if (oddItem && currentBet) {
+      dispatch({
+        type: ActionType.SHOW_MESSAGE,
+        payload: `You bet on the ${currentBet.value} (Game ${game.teams.home.name} - ${game.teams.away.name})`,
+      });
       dispatch({ type: ActionType.SET_BET, payload: { game: oddItem.game, bet: currentBet } });
       navigate('/');
     }

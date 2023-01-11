@@ -4,7 +4,7 @@ const sortGamesByDate = (data: OddItem[]) => {
   return data.sort((a, b) => a.game.timestamp - b.game.timestamp);
 };
 
-export const reducer = (state: State, action: Action) => {
+export const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case ActionType.SET_ODD_ITEMS:
       return {
@@ -15,6 +15,21 @@ export const reducer = (state: State, action: Action) => {
       return {
         ...state,
         bets: [...state.bets, action.payload],
+      };
+    }
+    case ActionType.SHOW_MESSAGE: {
+      console.log('aaaaaaaaaaaaaaaaaa');
+
+      return {
+        ...state,
+        messageVisible: true,
+        message: action.payload,
+      };
+    }
+    case ActionType.HIDE_MESSAGE: {
+      return {
+        ...state,
+        messageVisible: false,
       };
     }
 

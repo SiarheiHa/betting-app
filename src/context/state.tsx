@@ -6,6 +6,8 @@ const initialState: State = {
   oddItems: [],
   bets: [],
   status: FetchStatus.FULFILLED,
+  messageVisible: false,
+  message: '',
 };
 
 const initialContext: ContextType = {

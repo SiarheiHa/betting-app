@@ -24,7 +24,7 @@ class Api {
   };
 
   getOdds = async () => {
-    return Promise.resolve(oddsMOCK);
+    // return Promise.resolve(oddsMOCK);
     const response = await this.getResource(
       Endpoint.ODDS + '?league=12&season=2022-2023&bookmaker=3&bet=1',
     );

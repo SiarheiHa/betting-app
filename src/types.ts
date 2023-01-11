@@ -140,11 +140,15 @@ export interface State {
   oddItems: OddItem[];
   bets: { game: Game; bet: Value }[];
   status: FetchStatus;
+  messageVisible: boolean;
+  message: string;
 }
 
 export enum ActionType {
   SET_ODD_ITEMS = 'SET_ODD_ITEMS',
   SET_BET = 'SET_BET',
+  SHOW_MESSAGE = 'SHOW_MESSAGE',
+  HIDE_MESSAGE = 'HIDE_MESSAGE',
 }
 
 export interface ActionModel {
@@ -159,8 +163,15 @@ export interface SetBet extends ActionModel {
   type: ActionType.SET_BET;
   payload: { game: Game; bet: Value };
 }
+export interface ShowMessage extends ActionModel {
+  type: ActionType.SHOW_MESSAGE;
+  payload: string;
+}
+export interface HideMessage extends ActionModel {
+  type: ActionType.HIDE_MESSAGE;
+}
 
-export type Action = SetOddItems | SetBet;
+export type Action = SetOddItems | SetBet | ShowMessage | HideMessage;
 
 export interface ContextType {
   state: State;
