@@ -11,6 +11,13 @@ export const reducer = (state: State, action: Action) => {
         ...state,
         oddItems: sortGamesByDate(action.payload),
       };
+    case ActionType.SET_BET: {
+      return {
+        ...state,
+        bets: [...state.bets, action.payload],
+      };
+    }
+
     default:
       return state;
   }

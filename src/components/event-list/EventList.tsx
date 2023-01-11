@@ -2,24 +2,25 @@ import api from 'api';
 import EventItem from 'components/event-item';
 import ListGroup from 'components/list-group/ListGroup';
 import ListGroupItem from 'components/list-group/ListGroupItem';
-import React, { useEffect, useState } from 'react';
+import { Context } from 'context/state';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { OddItem } from 'types';
+import { ActionType } from 'types';
 import EventListHead from './event-list-head';
 
 import './EventList.scss';
 
-const sortGamesByDate = (data: OddItem[]) => {
-  return data.sort((a, b) => a.game.timestamp - b.game.timestamp);
-};
-
 const EventList = () => {
-  const [oddItems, setOddItems] = useState<OddItem[]>([]);
+  // const [oddItems, setOddItems] = useState<OddItem[]>([]);
   const navigate = useNavigate();
+  const {
+    state: { oddItems, status },
+    dispatch,
+  } = useContext(Context);
 
   useEffect(() => {
-    api.getOdds().then((data) => {
-      setOddItems(sortGamesByDate(data.response));
+    api.getOdds().then(({ response }) => {
+      dispatch({ type: ActionType.SET_ODD_ITEMS, payload: response });
     });
   }, []);
 

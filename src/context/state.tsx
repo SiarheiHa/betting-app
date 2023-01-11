@@ -4,6 +4,7 @@ import { reducer } from './reducer';
 
 const initialState: State = {
   oddItems: [],
+  bets: [],
   status: FetchStatus.FULFILLED,
 };
 

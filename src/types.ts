@@ -138,11 +138,13 @@ export enum FetchStatus {
 
 export interface State {
   oddItems: OddItem[];
+  bets: { game: Game; bet: Value }[];
   status: FetchStatus;
 }
 
 export enum ActionType {
   SET_ODD_ITEMS = 'SET_ODD_ITEMS',
+  SET_BET = 'SET_BET',
 }
 
 export interface ActionModel {
@@ -153,8 +155,12 @@ export interface SetOddItems extends ActionModel {
   type: ActionType.SET_ODD_ITEMS;
   payload: OddItem[];
 }
+export interface SetBet extends ActionModel {
+  type: ActionType.SET_BET;
+  payload: { game: Game; bet: Value };
+}
 
-export type Action = SetOddItems;
+export type Action = SetOddItems | SetBet;
 
 export interface ContextType {
   state: State;
